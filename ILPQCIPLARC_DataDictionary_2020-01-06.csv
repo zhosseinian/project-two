@@ -1,0 +1,105 @@
+"Variable / Field Name","Form Name","Section Header","Field Type","Field Label","Choices, Calculations, OR Slider Labels","Field Note","Text Validation Type OR Show Slider Number","Text Validation Min","Text Validation Max",Identifier?,"Branching Logic (Show field only if...)","Required Field?","Custom Alignment","Question Number (surveys only)","Matrix Group Name","Matrix Ranking?","Field Annotation"
+record_id,iplarc,,text,"Record ID",,,,,,,,,,,,,
+hospitalid,iplarc,,text,"Hospital ID",,,number,0,200,,,y,,,,,
+reporting_month,iplarc,,dropdown,"1. For which month are you reporting? ","1, April 2018 | 2, May 2018 | 3, June 2018 | 4, July 2018 | 5, August 2018 | 6, September 2018 | 7, October 2018 | 8, November 2018 | 9, December 2018 | 10, January 2019 | 11, February 2019 | 12, March 2019 | 13, April 2019 | 14, May 2019 | 15, June 2019 | 16, July 2019 | 17, August 2019 | 18, September 2019 | 19, October 2019 | 20, November 2019 | 21, December 2019 | 22, January 2020 | 23, February 2020 | 24, March 2020 | 25, April 2020 | 26, May 2020 | 27, June 2020 | 28, July 2020 | 29, August 2020 | 30, September 2020 | 31, October 2020 | 32, November 2020 | 33, December 2020",,autocomplete,,,,,y,,,,,
+phase,iplarc,,radio,"I am entering data for: ","1, Active phase | 2, Sustainability phase",,,,,,,y,,,,,
+structuremeasures,iplarc,,descriptive,,,,,,,,,,,,,,
+stakeholders_qi_team,iplarc,,checkbox,"2. What stakeholders do you have on your hospital QI team to date? 
+
+Check all that apply.","1, Administration | 2, MCO Liaison | 3, Pharmacy | 4, Billing | 5, Nursing | 6, Lactation consultant | 7, OB provider champion | 8, EMR/IT | 9, Ambulatory prenatal care site liaison | 10, Social Work | 11, Other",,,,,,"[phase] = '1'",y,,,,,
+other_stakeholder,iplarc,,text,"2a. If other, please specify: ",,,,,,,"[stakeholders_qi_team(11)] = '1'",y,,,,,
+inpatient_iuds,iplarc,"Hospital has IPLARC devices stocked in the inpatient inventory",radio,"3. Are inpatient IUDs available on your hospital formulary? ","1, Have not started | 2, Working on it | 3, In place (one or more IUDs are available)",,,,,,"[phase] = '1'",y,,,,,
+iud_specify,iplarc,,checkbox,"3a. If in place, please specify IUD(s): 
+
+Check all that apply. ","1, Mirena | 2, Lilleta | 3, Skyla | 4, Kyleena | 5, Paraguard | 6, Other",,,,,,"[inpatient_iuds] = '3'",y,,,,,
+other_iud,iplarc,,text,"3b. If other IUD, please specify: ",,,,,,,"[iud_specify(6)] = '1'",y,,,,,
+inpatient_implant,iplarc,,radio,"4. Are inpatient implants available on your hospital formulary? ","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+larc_availability,iplarc,,radio,"5. Are inpatient LARC devices (with needed supplies) available on Labor and Delivery and/or on the postpartum unit? ","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+larc_device,iplarc,,radio,"5a. What inpatient LARC devices are available on labor and delivery or the postpartum unit? ","1, IUD | 2, Implant | 3, Both",,,,,,"[larc_availability] = '3'",y,,,,,
+postpartum_iud_protocols,iplarc,"Hospital has IPLARC protocols in place for labor and delivery and postpartum units",radio,"6. Do you have immediate postpartum protocols and process flows in place for IUDs?
+
+","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+depts_iud_protocol,iplarc,,checkbox,"7. Which departments have implemented a protocol to support immediate postpartum placement of IUDs?
+
+Check all that apply. 
+Check both ""L&D"" and ""Postpartum unit"" if hospital has combined L&D/postpartum unit.","1, L&D | 2, Postpartum unit | 3, OB OR | 4, Pharmacy | 5, Billing | 6, Other",,,,,,"[postpartum_iud_protocols] = '3'",y,,,,,
+other_dept_iud,iplarc,,text,"7a. If other, please specify: ",,,,,,,"[depts_iud_protocol(6)] = '1'",y,,,,,
+postpartum_implant_prot,iplarc,,radio,"8. Do you have immediate postpartum protocols and process flows in place for implants?
+
+","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+depts_implant_protocol,iplarc,,checkbox,"9. Which departments have implemented a protocol to support immediate postpartum placement of implants? 
+
+Check all that apply.
+Check both ""L&D"" and ""Postpartum unit"" if hospital if hospital has combined L&D/postpartum unit. ","1, L&D | 2, Postpartum unit | 3, OB OR | 4, Pharmacy | 5, Billing | 6, Other",,,,,,"[postpartum_implant_prot] = '3'",y,,,,,
+other_dept_implant,iplarc,,text,"9a. If other, please specify: ",,,,,,,"[depts_implant_protocol(6)] = '1'",y,,,,,
+larc_340b,iplarc,"Hospital has coding/billing strategies in place for reimbursement for IPLARC",radio,"10. If your hospital carries LARC devices, does your hospital use 340B purchasing for LARC devices? ","1, Hospital is not eligible for/doesn't participate in 340B | 2, Eligible, not yet participating | 3, Eligible, participating | 4, Do not know",,,,,,"[phase] = '1'",y,,,,,
+iud_billingcodes,iplarc,,radio,"11. Have you implemented billing codes for IUDs? ","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+implant_billingcodes,iplarc,,radio,"12. Have you implemented billing codes for implants? ","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+billing_payer,iplarc,,checkbox,"13. If billing codes are implemented for IUD, implant, or both: With which payers do you have billing strategies in place?","1, Traditional Medicaid/Medicaid FFS | 2, Medicaid MCOs | 3, Private Insurers",,,,,,"[implant_billingcodes] = '3' or [iud_billingcodes] = '3'",y,,,,,
+private_insurer,iplarc,,checkbox,"13a. If private insurer, please specify (check all that apply): ","1, Aetna | 2, Ambetter | 3, Assurant Health | 4, BCBS of IL | 5, Coventry | 6, Harken Health | 7, Humana | 8, United Health | 9, Other",,,,,,"[reimbursement(3)] = '1'",y,,,,,
+other_privateinsur,iplarc,,text,"13b. If other private insurance, please specify: ",,,,,,,"[private_insurer(9)] = '1'",y,,,,,
+billed_devicesplaced,iplarc,,radio,"14. Has your hospital billed for the devices you placed? ","1, Yes | 0, No | 2, Not yet placed any devices",,,,,,,y,,,,,
+reimbursement,iplarc,,checkbox,"15. Have you received reimbursement for the devices that you placed?
+
+Check all that apply. ","1, Yes, traditional Medicaid/Medicaid FFS | 2, Yes, from MCO(s) | 3, Yes, from private payer(s) | 4, No | 5, Have not placed any devices yet | 6, Waiting on reimbursement - claim neither approved or denied yet",,,,,,,y,,,,,
+specific_mco,iplarc,,radio,"15a. If yes to MCO(s), please specify: 
+
+","1, Yes, from at least 1 Medicaid MCO | 2, Yes, from all Medicaid MCOs with whom the hospital contracts | 3, Yes, from all Medicaid MCOs, even those with whom the hospital does not contract",,,,,,"[reimbursement(2)] = '1'",y,,,,,
+specific_privatepayer,iplarc,,radio,"15b. If yes to private payer(s), please specify: 
+
+","1, Yes, from at least 1 private payers | 2, Yes, from all private payers with whom the hospital contracts",,,,,,"[reimbursement(3)] = '1'",y,,,,,
+device_iud_tracking,iplarc,"Hospital can document IPLARC placement in IT/EMR systems",radio,"16. Does your hospital have IT /EMR revisions implemented for tracking and documentation of immediate postpartum placement of IUDs?","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+device_tracking_where,iplarc,,checkbox,"16a. Where does IUD documentation occur? 
+
+Check all that apply. ","1, Delivery template - Providers | 2, Delivery template - nurses | 3, Separate EMR form - providers | 4, Separate EMR form - nurses | 5, Other",,,,,,"[device_iud_tracking] = '3'",y,,,,,
+other_tracking,iplarc,,text,"16b. If other, please specify: ",,,,,,,"[device_tracking_where(5)] = '1'",y,,,,,
+iud_revisions,iplarc,,checkbox,"17. Which IT / EMR revisions have been completed to assure adequate tracking, and documentation for IUDs? 
+
+Check all that apply. ","1, EMR for consent | 2, EMR for contraceptive choice counseling, including IPLARC | 3, Order sets | 4, Pharmacy system (acquisition and stocking) | 5, Billing system | 6, Tracking tools | 7, Other",,,,,,"[device_iud_tracking] = '3'",y,,,,,
+other_iud_revisions,iplarc,,text,"17a. If other, please specify: ",,,,,,,"[iud_revisions(7)] = '1'",y,,,,,
+device_implant_tracking,iplarc,,radio,"18. Does your hospital have IT /EMR revisions implemented for tracking and documentation of immediate postpartum placement of implants?","1, Have not started | 2, Working on it | 3, In place",,,,,,"[phase] = '1'",y,,,,,
+device_tracking_where2,iplarc,,checkbox,"18a. Where does implant documentation occur? 
+
+Check all that apply. ","1, Delivery template - Providers | 2, Delivery template - nurses | 3, Separate EMR form - providers | 4, Separate EMR form - nurses | 5, Other",,,,,,"[device_implant_tracking] = '3'",y,,,,,
+other_tracking2,iplarc,,text,"18b. If other, please specify: ",,,,,,,"[device_tracking_where2(5)] = '1'",y,,,,,
+implant_revisions,iplarc,,checkbox,"19. Which IT / EMR revisions have been completed to assure adequate tracking, and documentation for implants?
+
+Check all that apply. ","1, EMR for consent | 2, EMR for contraceptive choice counseling, including IPLARC | 3, Order sets | 4, Pharmacy system (acquisition and stocking) | 5, Billing system | 6, Tracking tools | 7, Other",,,,,,"[device_implant_tracking] = '3'",y,,,,,
+other_implant_revision,iplarc,,text,"19a. If other, please specify: ",,,,,,,"[implant_revisions(7)] = '1'",y,,,,,
+number_sites,iplarc,"Hospitals have provided education materials for affiliated prenatal care sites and to patients at their hospital during delivery admission",text,"20. Number of affiliated prenatal care sites:",,,number,0,500,,"[phase] = '1'",y,,,,,
+education,iplarc,,radio,"21. Have you provided patient education materials and counseling protocols and process flow for affiliated prenatal care sites regarding IPLARC, including all contraception options? ","1, Yes, one or more | 2, Yes, all | 0, No",,,,,,"[phase] = '1'",y,,,,,
+number_site_education,iplarc,,text,"21a. If yes, one or more, please specify number of affiliated prenatal care centers to whom you've provided materials:",,,number,0,500,,"[education] = '1'",y,,,,,
+standard_education,iplarc,,radio,"22. Have you implemented standardized education materials and counseling protocols and process flow for patients during delivery admission regarding contraceptive options including IPLARC?","1, Developed but not yet implemented | 2, Developed and implemented | 0, No",,,,,,"[phase] = '1'",y,,,,,
+communication_plan,iplarc,"System-wide Communication of IPLARC",radio,"23. Is there a communication plan in place to inform affiliated prenatal care sites, obstetrics providers, and your hospital system of hospital capacity to provide IPLARC? ","1, No, haven't started | 2, Working on it | 3, Yes, plan in place",,,,,,"[phase] = '1'",y,,,,,
+comm_strategy,iplarc,,yesno,"23a. If plan in place, has a communication strategy been implemented? ",,,,,,,"[communication_plan] = '3'",y,,,,,
+processmeasure,iplarc,,descriptive,,,,,,,,,,,,,,
+percent_trained_iplarc,iplarc,,dropdown,"24. Cumulative % of physicians and midwives trained on IPLARC evidence, protocols, and counseling:","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+percent_iplarc_iudplace,iplarc,,dropdown,"25. Cumulative % of physicians and midwives trained on IPLARC placement of IUDs","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+percent_iplarc_implant,iplarc,,dropdown,"26. Cumulative % of physicians and midwives trained on IPLARC placement of implants","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+nurse_training,iplarc,,dropdown,"27. Cumulative % of nurses trained on IPLARC evidence and protocols","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+lactationconsult_training,iplarc,,dropdown,"28. Cumulative % of Lactation Consultants trained on IPLARC evidence and protocols","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+lactationconsultant,iplarc,,yesno,"If 0%, do you have a Lactation consultant? ",,,,,,,"[lactationconsult_training] = '1'",y,,,,,
+socialworkers_training,iplarc,,dropdown,"29. Cumulative % of Social Workers trained on IPLARC evidence and protocols","1, 0% | 2, 10% | 3, 20% | 4, 30% | 5, 40% | 6, 50% | 7, 60% | 8, 70% | 9, 80% | 10, 90% | 11, 100%",,autocomplete,,,,"[phase] = '1'",y,,,,,
+socialworkers,iplarc,,yesno,"If 0%, do you have Social Workers? ",,,,,,,"[socialworkers_training] = '1'",y,,,,,
+outcomemeasures,iplarc,,descriptive,,,,,,,,,,,,,,
+deliveries,iplarc,,text,"30. Number of deliveries this month: ",,,number,0,500000,,,y,,,,,
+active_larc,iplarc,,yesno,"31. Is your hospital routinely counseling, offering, and providing immediate postpartum LARCs either IUD or Implants (i.e., is your system live)? ",,,,,,,,y,,,,,
+active_larc_yes,iplarc,,radio,"31a. If yes, please specify: ","1, IUDs | 2, Implants | 3, Both",,,,,,"[active_larc] = '1'",y,,,,,
+iuds,iplarc,,text,"32. Total number of immediate postpartum IUDs placed this month: ",,,number,0,500000,,"[active_larc_yes] = '1' or [active_larc_yes] = '3'",y,,,,,
+implants,iplarc,,text,"33. Total number of immediate postpartum implants placed this month: ",,,number,0,500000,,"[active_larc_yes] = '2' or [active_larc_yes] = '3'",y,,,,,
+example,iplarc,,descriptive,"If your hospital is routinely counseling, offering, and providing immediate postpartum LARCs, either IUD, implants, or both, please review a random sample of 10 charts for this month. 
+
+Begin by systematically selecting 10 records. 
+
+First, divide the total number of live births occurring at your facility in a given month by 10 and then select every nth chart where n is the result of that division. 
+
+Example 1: If your hospital has 102 births in a month, then divide 102 by 10=10.2 and you will select every 10th birth for that month.
+
+Example 2: If your hospital has 28 births in a month, then 28 divided by 10 is 2.8 and you will select every 2nd birth for that month. 
+
+Review this random sample of charts and record the number of charts (0-10) with the following information documented:",,,,,,,"[active_larc] = '1'",,,,,,
+number_prenatal,iplarc,,text,"34. How many patients out of 10 reviewed had  contraceptive counseling, including IPLARC, documented in the medical record during prenatal care? ",,,number,0,200,,"[active_larc] = '1'",y,,,,,"Language update 2.28.19"
+number_prenatal_no,iplarc,,text,"34a. Of patients who did not have contraceptive counseling documented, how many did not have prenatal care? ",,,,,,,"[active_larc] = '1'",y,,,,,"Added 2.28.19"
+number_prenatal_record,iplarc,,text,"34b. Of patients who did not have contraceptive counseling documented, how many had prenatal care, but did not have a prenatal record? ",,,,,,,"[active_larc] = '1'",y,,,,,"Added 2.28.19"
+number_deliveryadmiss,iplarc,,text,"35. How many patients out of 10 reviewed had  contraceptive counseling, including IPLARC, documented in the medical record during delivery admission? ",,,number,0,200,,"[active_larc] = '1'",y,,,,,"Language updated 2.28.19"
+sustainability,iplarc,,radio,"Does your team have a completed sustainability plan shared with ILPQC (info@ilpqc.org)? ","1, Yes | 2, Not yet",,,,,,"[phase] = '2'",,,,,,
