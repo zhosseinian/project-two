@@ -207,7 +207,7 @@ function buildCharts(_meta,data) {
 function init(data) {
   var selector = d3.select("#selDataset");
   console.log(data)
-  const names = new Set()
+  const names = [new Set()]
   for (let row of data){
     names.add(row['Regions'])
   }
