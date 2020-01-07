@@ -15,7 +15,95 @@ var cities = [
   {
     name: "John H. Stroger Cook County Health",
     location: [41.8728, -87.6737]
-  }
+  },
+  {
+    name: "UI Health",
+    location: [41.8696 -87.6716]
+  },
+  {
+    name: "St. Anthony's",
+    location: [41.8644, -87.6884]
+  },
+  {
+    name: "Mt. Siani Hospital",
+    location: [40.79, -73.9527]
+  },
+  {
+    name: "North Shore University",
+    location: [40.7752, -73.7013]
+  },
+  {
+    name: "Vista Medical Center",
+    location: [42.3782, -87.8325]
+  },
+  {
+    name: "Advocate Lutherin",
+    location: [42.0385, -87.8476]
+  },
+  {
+    name: "Advocate IL",
+    location: [41.937, -87.652]
+  },
+  {
+    name: "Carle Foundation",
+    location: [40.117, -88.2156]
+  },
+  {
+    name: "Norwegine Medical",
+    location: [48.8934, -2.271539927]
+  },
+  {
+    name: "Memorial Medical Center",
+    location: [39.8097, -89.6568]
+  },
+  {
+    name: "Memorial Carbondale",
+    location: [37.7274, -89.2207]
+  },
+  {
+    name: "Advocate Christ Memorial",
+    location: [41.9753, -87.6995]
+  },  
+  {name: "Rush University",
+  location: [41.8746, -87.6687]
+},
+
+{
+  name: "Advocate Trenity",
+  location: [41.7265, -87.5679]
+},
+{
+  name: "Abraham Lincoln Memorial",
+  location: [40.1538, -89.3898]
+},
+{
+  name: "Barne's Jewish",
+  location: [38.6369, -90.2645]
+},
+{
+  name: "Anderson Hospital",
+  location: [38.7367, -89.9462]
+},
+{
+  name: "Gibson Area",
+  location: [40.4653, --88.3758875]
+},
+{
+  name: "NW Medicine Centeral Du Page",
+  location: [41.8731, -88.15747833]
+},
+{
+  name: "Silvercross Hospital",
+  location: [41.5458, --87.98079]
+},
+{
+  name: "West Suburban",
+  location: [29.7095, -95.3981781]
+},
+{
+  name: "Passavant Area Hospital",
+  location: [47.274, -6.383059978]
+}
 ];
 
 // An array which will be used to store created cityMarkers
