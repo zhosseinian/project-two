@@ -15,7 +15,7 @@ function buildCharts(_meta,data) {
     const sampleValues = []
     for (let row of data){
       sampleValues.push(row['percent_iplarc_implant'])
-      regions.push(row['hospitalid'])
+      regions.push(row['Regions'])
     }
     
 
@@ -209,7 +209,7 @@ function init(data) {
   console.log(data)
   const names = new Set()
   for (let row of data){
-    names.add(row['hospitalid'])
+    names.add(row['Regions'])
   }
   const sortedNams = [...names].sort((a,b)=>parseInt(a)>parseInt(b))
   sortedNams.forEach(_meta => {

@@ -34,6 +34,15 @@ def precipitation():
 
     return jsonify(larcs_df.to_json(orient='table'))
 
+@app.route("/mean")
+def means():
+
+    con = sqlite3.connect("larcs.sqlite")
+    larcs_df = pd.read_sql_query("SELECT * FROM table_larcs", con)
+    mean_percentages = larcs_df.groupby('hospitalid')['percent_trained_iplarc'].mean()
+
+    return jsonify(larcs_df.to_json(orient='columns'))
+
 
 if __name__ == "__main__":
     app.run(threaded=True, debug=True, port=5000)
