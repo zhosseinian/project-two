@@ -5,8 +5,14 @@ import sqlite3
 
 from flask import Flask, jsonify
 
+from flask_cors import CORS, cross_origin
+app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+
 # database setup
-con = sqlite3.connect("larc.sqlite")
+con = sqlite3.connect("larcs.sqlite")
 
 # create an app
 app = Flask(__name__)
@@ -24,8 +30,8 @@ def welcome():
 def precipitation():
     """Convert the query results to a Dictionary using date as the key and prcp as the value."""
     """Return the JSON representation of your dictionary"""
-    con = sqlite3.connect("larc.sqlite")
-    larcs_df = pd.read_sql_query("SELECT * FROM table_tesrt", con)
+    con = sqlite3.connect("larcs.sqlite")
+    larcs_df = pd.read_sql_query("SELECT * FROM table_larcs", con)
 
     return jsonify(larcs_df.to_json(orient='table'))
 
