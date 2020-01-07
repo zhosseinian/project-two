@@ -8,14 +8,13 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 # database setup
 con = sqlite3.connect("larcs.sqlite")
 
 # create an app
-app = Flask(__name__)
+
 
 # list all available routes
 @app.route("/")
@@ -37,6 +36,6 @@ def precipitation():
 
 
 if __name__ == "__main__":
-    app.run(threaded=True, port=5000)
+    app.run(threaded=True, debug=True, port=5000)
 
 

@@ -1,11 +1,11 @@
 larcs_json = "https://sheltered-lake-36010.herokuapp.com/api/v1.0/LARCs"
+local_url = "http://127.0.0.1:5000/api/v1.0/LARCs"
 
-var data;
 
-d3.json(larcs_json).then((importedData) => {
-    data = importedData;
-    
-init();
+
+d3.json(local_url).then((importedData) => {
+   const data = JSON.parse(importedData).data;
+init(data);
 });
 
 function buildMetadata(_meta) {
@@ -179,16 +179,22 @@ function buildCharts(_meta) {
 
 };
 
-function init() {
+function init(data) {
   var selector = d3.select("#selDataset");
-  var name = data.hospitalid;
+  var name = data.reduce(function (acc,row){
+   { acc && acc.push(row["hospitalid"])}
+  },[])
+if(name){
   name.forEach(_meta => {
-      selector
-          .append("option")
-          .text(_meta)
-          .property("value", _meta);
-  });
-  optionChanged(data.hospitalid[0]);
+    selector
+        .append("option")
+        .text(_meta)
+        .property("value", _meta);
+});
+optionChanged(name[0]);
+console.log(name)
+}
+
 };
 
 function optionChanged(newSample) {
