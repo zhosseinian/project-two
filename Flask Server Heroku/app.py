@@ -39,11 +39,14 @@ def means():
 
     con = sqlite3.connect("larcs.sqlite")
     larcs_df = pd.read_sql_query("SELECT * FROM table_larcs", con)
-    mean_iplarc_percentages = larcs_df.groupby('hospitalid')['percent_trained_iplarc'].mean()
-    mean_iud_percentages = larcs_df.groupby('hospitalid')['percent_iplarc_iudplace'].mean()
-    mean_implant_percentages = larcs_df.groupby('hospitalid')['percent_iplarc_implant'].mean()
+    data_dict = {
+         "mean_iplarc_percentages" : larcs_df.groupby('hospitalid')['percent_trained_iplarc'].mean(),
+    "mean_iud_percentages" : larcs_df.groupby('hospitalid')['percent_iplarc_iudplace'].mean(),
+    "mean_implant_percentages" : larcs_df.groupby('hospitalid')['percent_iplarc_implant'].mean()
+    }
+   
 
-    return jsonify(larcs_df.to_json(orient='columns'))
+    return jsonify(data_dict)
 
 
 if __name__ == "__main__":
