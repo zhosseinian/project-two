@@ -3,7 +3,7 @@ local_url = "http://127.0.0.1:5000/api/v1.0/LARCs"
 
 
 
-d3.json(local_url).then((importedData) => {
+d3.json(larcs_json).then((importedData) => {
    const data = JSON.parse(importedData).data;
 init(data);
 });
@@ -13,24 +13,56 @@ function buildCharts(_meta,data) {
     
     const regions = []
     const sampleValues = []
+    const regions_2 = []
+    const sampleValues_2 = []
     for (let row of data){
-      sampleValues.push(row['percent_iplarc_implant'])
+      sampleValues.push(row['percent_iplarc_iudplace'])
       regions.push(row['Regions'])
+      sampleValues_2.push(row['percent_iplarc_implant'])
+      regions_2.push(row['Regions'])
     }
     
+    // var chartSamples = data.filter(obj => obj.hospitalid == _meta)[0];
+    
+    // var bar_labels = chartSamples.percent_iplarc_implant.slice(0, 10);
+    // var percent_iplarc_implant = bar_labels.reverse();
+    // otu_ids = percent_iplarc_implant.map(hospitalid=>"OTU " + hospitalid);
+  
+    // var bar_values = chartSamples.hospitalid.slice(0, 10);
+    // var sampleValues = bar_values.reverse();
+  
+    // var bar_hover = chartSamples.Regions.slice(0, 10);
+    // var Regions = bar_hover.reverse();
 
 // bar chart
     var trace1 = {
         x: regions,
         y: sampleValues,
         // text: otu_labels,
-        type: "bar"
+        type: "bar",
+        name: "IUD"
         // orientation: "h",
     };
-    
-    var data_bar = [trace1];
 
-    Plotly.newPlot("bar", data_bar);
+    var trace2 = {
+      x: regions_2,
+      y: sampleValues_2,
+      // text: otu_labels,
+      type: "bar",
+      name: "Implant"
+      // orientation: "h",
+  };
+    
+    var data_bar = [trace1, trace2];
+
+    const layout = {
+      barmode: 'stack', 
+      autosize: false,
+      width: 1000,
+      height: 700
+    };
+
+    Plotly.newPlot("bar", data_bar, layout);
 }
 
 // function buildMetadata(_meta) {

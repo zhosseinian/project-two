@@ -9,4 +9,20 @@ body {
 body,
 html {
   height: 100%;
+  font-family: 'Permanent Marker', cursive;
 }
+
+h1 {
+  background-color: #009AD5;
+  
+}
+
+#headertop {
+  background-color: #009AD5;
+}
+/* 
+#bar {
+  autosize: false,
+  width: 500,
+  height: 500
+} */
