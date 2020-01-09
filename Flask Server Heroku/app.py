@@ -40,9 +40,9 @@ def means():
     con = sqlite3.connect("larcs.sqlite")
     larcs_df = pd.read_sql_query("SELECT * FROM table_larcs", con)
     data_dict = {
-         "mean_iplarc_percentages" : larcs_df.groupby('hospitalid')['percent_trained_iplarc'].mean(),
-    "mean_iud_percentages" : larcs_df.groupby('hospitalid')['percent_iplarc_iudplace'].mean(),
-    "mean_implant_percentages" : larcs_df.groupby('hospitalid')['percent_iplarc_implant'].mean()
+        "mean_iplarc_percentages" : larcs_df.groupby('Regions')['percent_trained_iplarc'].mean().to_dict(),
+        "mean_iud_percentages" : larcs_df.groupby('Regions')['percent_iplarc_iudplace'].mean().to_dict(),
+        "mean_implant_percentages" : larcs_df.groupby('Regions')['percent_iplarc_implant'].mean().to_dict()
     }
    
 

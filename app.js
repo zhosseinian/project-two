@@ -1,26 +1,36 @@
 larcs_json = "https://sheltered-lake-36010.herokuapp.com/api/v1.0/LARCs"
 local_url = "http://127.0.0.1:5000/api/v1.0/LARCs"
+mean_url = "https://sheltered-lake-36010.herokuapp.com/mean"
 
+const LARCs_data = d3.json(larcs_json);
+const mean_LARCs_data =  d3.json(mean_url);
 
+Promise.all([LARCs_data,mean_LARCs_data]).then(([importedData,meanimportedData]) => {
 
-d3.json(larcs_json).then((importedData) => {
    const data = JSON.parse(importedData).data;
-init(data);
+   const mean_data = (meanimportedData);
+   console.log(mean_data);
+init(data, mean_data);
 });
 
-function buildCharts(_meta,data) {
+function buildCharts(_meta,data, mean_data) {
     // var chartSamples = data.samples.filter(obj => obj.id == _meta)[0];
     
     const regions = []
     const sampleValues = []
     const regions_2 = []
     const sampleValues_2 = []
-    for (let row of data){
-      sampleValues.push(row['percent_iplarc_iudplace'])
-      regions.push(row['Regions'])
-      sampleValues_2.push(row['percent_iplarc_implant'])
-      regions_2.push(row['Regions'])
+    for (let meanType in mean_data["mean_implant_percentages"]){
+      sampleValues.push( mean_data["mean_implant_percentages"][meanType])
+      regions.push(meanType)
+    
     }
+    for (let meanType in mean_data["mean_iud_percentages"]){
+      sampleValues_2.push( mean_data["mean_iud_percentages"][meanType])
+      regions_2.push(meanType)
+    
+    }
+   
     
     // var chartSamples = data.filter(obj => obj.hospitalid == _meta)[0];
     
@@ -236,9 +246,9 @@ function buildCharts(_meta,data) {
 
 // };
 
-function init(data) {
+function init(data, mean_data) {
   var selector = d3.select("#selDataset");
-  console.log(data)
+  // console.log(data)
   const names = new Set()
   for (let row of data){
     names.add(row['Regions'])
@@ -250,13 +260,13 @@ function init(data) {
         .text(_meta)
         .property("value", _meta);
 });
-optionChanged(sortedNams,data);
+optionChanged(sortedNams,data, mean_data);
 
 
-console.log(sortedNams)
+// console.log(sortedNams)
 };
 
-function optionChanged(newSample,data) {
+function optionChanged(newSample,data, mean_data) {
     // buildMetadata(newSample);
-    buildCharts(newSample,data);
+    buildCharts(newSample,data, mean_data);
 };
